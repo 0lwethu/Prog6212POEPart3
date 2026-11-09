@@ -1,0 +1,40 @@
+﻿@model IEnumerable<RaceDayMVC.Models.EventViewModel>
+
+@{
+    ViewData["Title"] = "Participant Dashboard";
+}
+
+<div class="container mt-4">
+    <h2>Participant Dashboard</h2>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-warning">No available events found.</div>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.EventDate.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Location</td>
+                        <td>
+                            <a class="btn btn-sm btn-success" href="#">Register</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Manage Events";
+}
+
+<div class="container mt-5">
+    <h2>Manage Events</h2>
+    <p>Create, update and manage running events.</p>
+
+    <a asp-controller="Events" asp-action="Index"
+       class="btn btn-primary">View Events</a>
+
+    <div class="alert alert-info mt-3">
+        Event creation, editing and deletion will be connected to the API
+        in the event-management stage.
+    </div>
+</div>

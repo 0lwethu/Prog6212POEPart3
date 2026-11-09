@@ -1,0 +1,41 @@
+﻿@model IEnumerable<RaceDayMVC.Models.EventViewModel>
+
+@{
+    ViewData["Title"] = "Organiser Dashboard";
+}
+
+<div class="container mt-4">
+    <h2>Organiser Dashboard</h2>
+    <p>
+        <a class="btn btn-primary" asp-controller="Organiser" asp-action="CreateEvent">Create New Event</a>
+    </p>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-warning">No events found or API is offline.</div>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Fee</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.EventDate.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Location</td>
+                        <td>@item.RegistrationFee.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

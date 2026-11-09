@@ -1,0 +1,87 @@
+﻿@model List<RaceDayMVC.Models.EventViewModel>
+
+@{
+    ViewData["Title"] = "Explore Events";
+}
+
+<div class="container mt-5 mb-5">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Explore Race Events</h1>
+        <p class="text-muted">
+            Discover upcoming races and find your next challenge.
+        </p>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-warning">
+            @ViewBag.Error
+        </div>
+    }
+
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info text-center">
+            No race events are currently available.
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+
+            @foreach (var race in Model)
+            {
+                <div class="col-md-4">
+
+                    <div class="card shadow h-100">
+
+                        <div class="card-body">
+
+                            <span class="badge bg-success mb-2">
+                                @race.Status
+                            </span>
+
+                            <h4 class="fw-bold">
+                                @race.EventName
+                            </h4>
+
+                            <p class="text-muted">
+                                @race.Description
+                            </p>
+
+                            <hr />
+
+                            <p>
+                                <strong>Date:</strong>
+                                @race.EventDate.ToString("dd MMMM yyyy")
+                            </p>
+
+                            <p>
+                                <strong>Time:</strong>
+                                @race.StartTime
+                            </p>
+
+                            <p>
+                                <strong>Location:</strong>
+                                @race.Location
+                            </p>
+
+                            <a asp-controller="Events"
+                               asp-action="Details"
+                               asp-route-id="@race.EventID"
+                               class="btn btn-primary w-100">
+                                View Details
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>
