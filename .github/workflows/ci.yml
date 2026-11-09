@@ -11,6 +11,10 @@ jobs:
     name: Build & Validate .NET Solution
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./Prog6212POEPart3
+
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
